@@ -1,0 +1,27 @@
+<%= provide :title, 'Hack-a-thons' %>
+<% @events.each do |event| %>
+	<h3>
+		<%= link_to event.title, event_url(event.id) %>
+	</h3>
+	<h4>
+		<%= link_to event.location, event.website %>
+	</h4>
+	<h4>
+		<%= event.start_date_in_words %> - <%= event.end_date_in_words %>
+	</h4>
+	<% if event.subtitle.present? %>
+		<p style='font-style:italic;'>
+			<%= event.subtitle %>
+		</p>
+	<% end %>
+	<p>
+		<%= event.description %>
+	</p>
+	<!--button><%= link_to 'Hack Projects', event_url(event.id) %></button-->
+	<hr/>
+<% end %>
+
+
+
+
+

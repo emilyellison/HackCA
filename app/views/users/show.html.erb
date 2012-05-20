@@ -1,0 +1,43 @@
+<%= provide :title, "#{@user.full_name}" %>
+<p>
+	E-mail: <%= link_to @user.email, "mailto:#{@user.email}?Subject=Hack%20@%20CA" %>
+</p>
+<p>
+Background:
+	<% @background.each do |background| %>
+		<li><%= background %></li>
+	<% end %>
+</p><br/>
+<h2>
+	Hack Projects
+</h2><hr/>
+<% @user.webapps.each do |webapp| %>
+	<h3>
+		<%= link_to webapp.title, webapp_url(webapp.id) %>
+	</h3>
+	<p>
+		<%= webapp.description %>
+	</p>
+	<p>
+		Website: <%= link_to webapp.website, webapp.website %>
+	</p>
+	<% if webapp.github.present? %>
+		<p>
+			Github: <%= link_to webapp.github, webapp.github %>
+		</p>
+	<% end %>
+	<p>
+		Event: <%= link_to webapp.event.title, event_url(webapp.event.id) %>
+	</p>
+	<p>
+		Team Mates:
+	</p>
+	<% webapp.teams.each do |team| %>
+		<% if team.user_id.present? && @user.id != team.user_id %>
+			<li>
+				<%= link_to User.find_by_id(team.user_id).full_name, user_url(User.find_by_id(team.user_id)) %>
+			</li>
+		<% end %>
+	<% end %>
+	<hr/>
+<% end %>

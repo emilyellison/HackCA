@@ -1,0 +1,10 @@
+<%= provide :title, 'Add Your Hack' %>
+<% if @webapp.errors.present? %>
+	<span class='errors'>
+	Whoops! You had some errors.<br/><br/>
+	<% @webapp.errors.full_messages.each do |message| %>
+		<li><%= message %></li>
+	<% end %>
+	</span><br/>
+<% end %>
+<%= render 'webapps/form' %>

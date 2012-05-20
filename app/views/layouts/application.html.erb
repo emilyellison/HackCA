@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>#CAHack</title>
+	  <%= stylesheet_link_tag    "application", :media => "all" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<%= link_to '#CAHack' %>
+			</h1>
+			<div class='menu'>
+				<%= link_to 'Hack-a-thons', root_url %> |
+				<% if @current_user %>
+					<%= link_to 'Profile', user_url(@current_user.id) %> |
+					<%= link_to 'Members', users_url %> |
+					<%= link_to 'Sign Out', session_url %>
+				<% else %>
+					<%= link_to 'Sign In', new_session_url, class: 'button' %>
+				<% end %>
+			</div>
+		</header>
+		<div class='content'>
+			<h2>
+				<%= yield :title %>
+			</h2>
+			<hr/>
+			<% if flash[:notice] %>
+				<p class='notice'><%= flash[:notice] %></p>
+			<% end %>
+			<%= yield %>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<%= provide :title, "#{@webapp.title}" %>
+<p>
+	<%= @webapp.description %>
+<p/>
+<p>
+	Website: <%= link_to @webapp.website, @webapp.website %>
+<p/>
+<% if @webapp.github.present? %>
+	<p>
+		Github: <%= link_to @webapp.github, @webapp.github %>
+	<p/>
+<% end %>
+<p>
+	Event: <%= link_to @webapp.event.title, event_url(@webapp.event.id) %>
+</p>
+<p>
+	Team Members:
+		<% @webapp.users.each do |user| %>
+			<li><%= link_to user.full_name, user_url(user.id) %></li>
+		<% end %>
+</p>
+<% if @current_user %>
+	<% if @team_members.include? @current_user.id %>
+		<br/><%= link_to 'Delete Your Hack', webapp_url(@webapp.id), method: :delete, confirm: 'Sure about that?' %>
+	<% end %>
+<% end %>

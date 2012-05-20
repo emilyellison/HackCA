@@ -1,0 +1,19 @@
+<%= form_for @webapp do |w| %>
+	<%= w.label :event_id, 'Hack Event' %>
+	<%= w.collection_select :event_id, Event.all, :id, :event_tag, include_blank: true %>
+	<%= w.label :title, 'Title*' %>
+	<%= w.text_field :title %>
+	<%= w.label :description, 'Description*' %>
+	<%= w.text_area :description, placeholder: 'What problem are you trying to solve?', rows: 6 %>
+	<%= w.label :website, 'Website*' %>
+	<%= w.text_field :website %>
+	<%= w.label :github %>
+	<%= w.text_field :github %>
+	<p>Team Member(s) - Remember to include yourself!</p>
+	<div id="tasks">
+	  <%= render :partial => 'team', :collection => @webapp.teams %>
+	</div>
+	<br/>
+	<%= w.submit 'Add Your Hack', class: 'button'  %>
+<% end %>
+<br/><br/>

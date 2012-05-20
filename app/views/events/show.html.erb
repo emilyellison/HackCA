@@ -1,0 +1,20 @@
+<%= provide :title, "#{@event.title}" %>
+<% if !@webapps.empty? %>
+	<% @webapps.each do |webapp| %>
+		<h3>
+			<%= link_to webapp.title, webapp_url(webapp.id) %>
+		</h3>
+		<p>
+			<%= webapp.description %>
+		</p>
+		<p>
+			Website: <%= link_to webapp.website, webapp.website %>
+		</p>
+	<hr/>
+	<% end %>
+<% else %>
+	<p>Nothing yet...</p><br/>
+<% end %>
+<% if @current_user %>
+	<button><%= link_to 'Add Your Hack', new_webapp_url %></button>
+<% end %>
