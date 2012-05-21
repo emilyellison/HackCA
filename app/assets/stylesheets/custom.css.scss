@@ -95,11 +95,16 @@ header {
 		text-decoration:none;
 		color: #2b7dc4;;
 	}
-	.notice {
-		color:darkorange;
+	.notice, .alert {
 		font-weight:bold;
-		font-size:18px;
-		padding:0px 0px 10px;
+		font-size:20px;
+		padding:10px 0px 15px;
+	}
+	.notice {
+		color:#1d5687;
+	}
+	.alert {
+		color:#ed290b;
 	}
 	.errors {
 		color:#ed290b;

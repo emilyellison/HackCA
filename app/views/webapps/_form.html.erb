@@ -1,3 +1,12 @@
+<% if @webapp.errors.present? %>
+	<span class='errors'>
+		<span class='alert'>Whoops! You had some errors.</span><br/><br/>
+		<% @webapp.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</span><br/>
+<% end %>
+
 <%= form_for @webapp do |w| %>
 	<%= w.label :event_id, 'Hack Event*' %>
 	<%= w.collection_select :event_id, Event.all, :id, :event_tag, include_blank: true %>

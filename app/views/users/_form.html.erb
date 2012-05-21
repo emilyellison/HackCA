@@ -1,3 +1,12 @@
+<% if @user.errors.present? %>
+	<span class='errors'>
+		<span class='alert'>Whoops! You had some errors.</span><br/><br/>
+		<% @user.errors.full_messages.each do |message| %>
+			<li><%= message %></li>
+		<% end %>
+	</span><br/>
+<% end %>
+
 <%= form_for @user do |f| %>
 	<%= f.label :first, 'First Name*' %>
 	<%= f.text_field :first %>

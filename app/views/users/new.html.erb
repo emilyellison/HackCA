@@ -1,11 +1,4 @@
 <%= provide :title, 'Join #caHack' %>
-<% if @user.errors.present? %>
-	<span class='errors'>
-	Whoops! You had some errors.<br/><br/>
-	<% @user.errors.full_messages.each do |message| %>
-		<li><%= message %></li>
-	<% end %>
-	</span><br/>
-<% end %>
+
 
 <%= render 'users/form' %>

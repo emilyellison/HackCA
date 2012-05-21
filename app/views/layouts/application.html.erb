@@ -13,6 +13,9 @@
 				<%= yield :title %>
 			</h2>
 			<hr/>
+			<% if flash[:alert] %>
+				<p class='alert'><%= flash[:alert] %></p>
+			<% end %>
 			<% if flash[:notice] %>
 				<p class='notice'><%= flash[:notice] %></p>
 			<% end %>

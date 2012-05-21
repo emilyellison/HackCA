@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if @current_user
       @users = User.order('LOWER(first) asc').all
     else
-      redirect_to new_session_url, notice: 'You must be logged in to see other member\'s profiles.'
+      redirect_to new_session_url, alert: 'You must be logged in to see other member\'s profiles.'
     end
   end
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to new_session_url, notice: "Welcome to Hack@CA, #{@user.first}! Sign in below."
     else
-      render new_user_path, notice: 'There were a few errors.'
+      render new_user_path, alert: 'There were a few errors.'
     end
   end
   
@@ -29,16 +29,16 @@ class UsersController < ApplicationController
       @background << 'Design' if @user.design == true
       @background << 'HTML/CSS' if @user.html_css == true
     else
-      redirect_to new_session_url, notice: 'You must be logged in to see other member\'s profiles.'
+      redirect_to new_session_url, alert: 'You must be logged in to see other member\'s profiles.'
     end
   end
   
   def edit
     @user = User.find_by_id(params[:id])
     if @current_user.nil? 
-      redirect_to new_session_url, notice: 'You must be logged in to edit your profile.'
+      redirect_to new_session_url, alert: 'You must be logged in to edit your profile.'
     elsif @user.id != @current_user.id
-      redirect_to edit_user_url(@current_user.id), notice: 'You may only edit your own profile.'
+      redirect_to edit_user_url(@current_user.id), alert: 'You may only edit your own profile.'
     end
   end
   
@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     if @user.id == @current_user.id && @user.update_attributes(params[:user])
       redirect_to user_url(@user.id), notice: 'Your profile has been updated.'
     else
-      render new_user_path, notice: 'There were a few errors.'
+      render new_user_path
     end
   end
   

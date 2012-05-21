@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:cookie] = user.id
       redirect_to root_url, notice: "Welcome, #{user.first}!"
     else
-      redirect_to new_session_url, notice: 'Invalid username/password'
+      redirect_to new_session_url, alert: 'Invalid username/password'
     end
   end
   

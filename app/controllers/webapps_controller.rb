@@ -5,7 +5,7 @@ class WebappsController < ApplicationController
       @webapp = Webapp.new
       5.times { @webapp.teams.build }
     else
-      redirect_to root_url, notice: 'You must be logged in to add a project!'
+      redirect_to root_url, alert: 'You must be logged in to add a project!'
     end
   end
   
@@ -14,7 +14,7 @@ class WebappsController < ApplicationController
     if @webapp.save
       redirect_to root_url, notice: 'Congrats on adding your app!'
     else
-      render 'webapps/new', notice: 'There were some errors.'
+      render 'webapps/new', alert: 'There were some errors.'
     end
   end
   
@@ -36,7 +36,7 @@ class WebappsController < ApplicationController
     if @current_user
       @webapp = Webapp.find_by_id(params[:id])
     else
-      redirect_to new_session_url, notice: 'You must be signed in to edit your hack.'
+      redirect_to new_session_url, alert: 'You must be signed in to edit your hack.'
     end
   end
   
@@ -47,7 +47,7 @@ class WebappsController < ApplicationController
     if @webapp.update_attributes(params[:webapp])
       redirect_to webapp_url(@webapp.id), notice: 'You\'re hack has been updated!'
     else
-      render 'webapps/edit', notice: 'There were some errors.'
+      render 'webapps/edit'
     end
   end
 
