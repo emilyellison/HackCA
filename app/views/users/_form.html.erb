@@ -18,7 +18,11 @@
 	<%= f.check_box :design, style: 'visibility: hidden' %>
 	<%= f.label :html_css, 'HTML/CSS', class: 'select', id: 'label_html_css' %>
 	<%= f.check_box :html_css, style: 'visibility: hidden' %><br/>	
-	<%= f.submit 'Submit', class: 'button'  %>
+	<% if @user.id.nil? %>
+		<%= f.submit 'Join #caHack', class: 'button'  %>
+	<% else %>
+		<%= f.submit 'Edit Your Profile', class: 'button'  %>
+	<% end %>
 
 <% end %>
 <br/><br/>

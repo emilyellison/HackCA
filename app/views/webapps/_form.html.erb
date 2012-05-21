@@ -14,6 +14,10 @@
 	  <%= render :partial => 'team', :collection => @webapp.teams %>
 	</div>
 	<br/>
-	<%= w.submit 'Add Your Hack', class: 'button'  %>
+	<% if @webapp.id.nil? %>
+		<%= w.submit 'Add Your Hack', class: 'button'  %>
+	<% else %>
+		<%= w.submit 'Edit Your Hack', class: 'button'  %>
+	<% end %>
 <% end %>
 <br/><br/>
