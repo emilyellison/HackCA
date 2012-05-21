@@ -31,6 +31,25 @@ class WebappsController < ApplicationController
     @webapp.destroy
     redirect_to root_url, notice: 'Your hack has been demolished!'
   end
+  
+  def edit
+    if @current_user
+      @webapp = Webapp.find_by_id(params[:id])
+    else
+      redirect_to new_session_url, notice: 'You must be signed in to edit your hack.'
+    end
+  end
+  
+  def update
+    params[:webapp][:existing_team_attributes] ||= {}
+    
+    @webapp = Webapp.find_by_id(params[:id])
+    if @webapp.update_attributes(params[:webapp])
+      redirect_to webapp_url(@webapp.id), notice: 'You\'re hack has been updated!'
+    else
+      render 'webapps/edit', notice: 'There were some errors.'
+    end
+  end
 
   
 end

@@ -1,0 +1,9 @@
+<%= provide :title, 'Edit Your Profile' %>
+<p>
+	<%= gravatar_for @user, size: 100 %>
+</p>
+<p>
+	<%= link_to 'Change Gravatar', "http://gravatar.com/emails" %>
+</p>
+
+<%= render 'users/form' %>

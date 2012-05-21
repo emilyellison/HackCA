@@ -1,5 +1,5 @@
 <%= form_for @webapp do |w| %>
-	<%= w.label :event_id, 'Hack Event' %>
+	<%= w.label :event_id, 'Hack Event*' %>
 	<%= w.collection_select :event_id, Event.all, :id, :event_tag, include_blank: true %>
 	<%= w.label :title, 'Title*' %>
 	<%= w.text_field :title %>

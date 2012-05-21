@@ -8,27 +8,4 @@
 	</span><br/>
 <% end %>
 
-<%= form_for @user do |f| %>
-	<%= f.label :first, 'First Name*' %>
-	<%= f.text_field :first %>
-	<%= f.label :last, 'Last Name*' %>
-	<%= f.text_field :last %>
-	<%= f.label :email, 'E-mail*' %>
-	<%= f.text_field :email %>
-	<%= f.label :password, 'Password*' %>
-	<%= f.password_field :password %>	
-	<%= f.label :password_confirmation, 'Confirm Password*' %>
-	<%= f.password_field :password_confirmation %>
-	<p>
-		<strong>Background</strong>
-	</p>
-	<%= f.label :dev, 'Development', class: 'select', id: 'label_dev' %>
-	<%= f.check_box :dev, style: 'visibility: hidden' %>
-	<%= f.label :design, 'Design', class: 'select', id: 'label_design' %>
-	<%= f.check_box :design, style: 'visibility: hidden' %>
-	<%= f.label :html_css, 'HTML/CSS', class: 'select', id: 'label_html_css' %>
-	<%= f.check_box :html_css, style: 'visibility: hidden' %><br/>	
-	<%= f.submit 'Join', class: 'button'  %>
-
-<% end %>
-<br/><br/>
+<%= render 'users/form' %>

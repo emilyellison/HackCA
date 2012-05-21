@@ -1,0 +1,15 @@
+<%= provide :title, 'Tweets' %>
+<% @tweets.each do |tweet| %>
+	<% if tweet[:hashtags] != [] %>
+	<h3>
+		<%= link_to tweet[:from_user_name], "https://twitter.com/#!/#{tweet[:from_user]}" %> @<%= tweet[:from_user] %>
+	</h3>
+	<p>
+		<%= tweet[:text] %>
+	</p>
+	<p class='date'>
+		<%= time_ago_in_words(tweet[:created_at]) %> ago.
+	</p>
+	<hr/>
+	<% end %>
+<% end %>

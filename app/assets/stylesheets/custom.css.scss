@@ -63,7 +63,7 @@ header {
 	h1, .menu {
 		margin:0px 100px;
 		color:white;
-		width:500px;
+		width:600px;
 	}
 	h1 {
 		font-size:30px;
@@ -85,7 +85,8 @@ header {
 		font-size:15px;
 	}
 	input, textarea {
-		width:300px;
+		width:400px;
+		font-family:monaco;
 	}
 	select {
 		margin:10px 0px;
@@ -156,7 +157,10 @@ header {
 		line-height:20px;
 	}
 	li {
-		margin:10px 0px;
+		margin:10px 0px 10px;
+	}
+	.date {
+		color:grey;
 	}
 }
 

@@ -1,5 +1,6 @@
 <%= provide :title, 'Members' %>
 <% @users.each do |user| %>
+	<p><%= gravatar_for user, size: 70 %></p>
 	<p><%= link_to user.full_name, user_url(user.id) %></p>
 	<hr/>
 <% end %>

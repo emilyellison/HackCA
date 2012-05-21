@@ -1,3 +1,10 @@
-<%= fields_for "webapp[team_attributes][]", team do |t| %>
+<!-- <%= fields_for "webapp[team_attributes][]", team do |t| %>
 	<%= t.collection_select :user_id, User.order('LOWER(first) asc').all, :id, :full_name, :include_blank => true %>
-<% end %>
+<% end %> -->
+
+
+  <%= fields_for_team(team) do |team_form| %>
+  <p>
+    <%= team_form.collection_select :user_id, User.order('LOWER(first) asc').all, :id, :full_name, :include_blank => true %>
+  </p>
+  <% end %>

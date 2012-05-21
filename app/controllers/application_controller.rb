@@ -7,4 +7,6 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by_id(session[:cookie])
   end
   
+
+  
 end

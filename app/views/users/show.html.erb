@@ -1,5 +1,8 @@
 <%= provide :title, "#{@user.full_name}" %>
 <p>
+	<%= gravatar_for @user, size: 80 %>
+</p>
+<p>
 	E-mail: <%= link_to @user.email, "mailto:#{@user.email}?Subject=Hack%20@%20CA" %>
 </p>
 <p>
@@ -7,10 +10,17 @@ Background:
 	<% @background.each do |background| %>
 		<li><%= background %></li>
 	<% end %>
-</p><br/>
+</p>
+<br/>
+<% if @current_user.id == @user.id %>
+	<p>
+		<%= link_to 'Edit Your Profile', edit_user_url(@user.id) %>
+	</p>
+<% end %>
 <h2>
 	Hack Projects
-</h2><hr/>
+</h2>
+<hr/>
 <% @user.webapps.each do |webapp| %>
 	<h3>
 		<%= link_to webapp.title, webapp_url(webapp.id) %>
@@ -39,5 +49,17 @@ Background:
 			</li>
 		<% end %>
 	<% end %>
+	<% if @current_user.id == @user.id %>
+			<br/>
+			<p>
+				<%= link_to 'Edit Your Hack', edit_webapp_url(webapp.id) %>
+			</p>
+			<p>
+				<%= link_to 'Delete Your Hack', webapp_url(webapp.id), method: :delete, confirm: 'Sure about that?' %>
+			</p>
+	<% end %>
 	<hr/>
+<% end %>
+<% if @current_user %>
+	<button><%= link_to 'Add a Hack', new_webapp_url %></button>
 <% end %>

@@ -21,6 +21,12 @@
 </p>
 <% if @current_user %>
 	<% if @team_members.include? @current_user.id %>
-		<br/><%= link_to 'Delete Your Hack', webapp_url(@webapp.id), method: :delete, confirm: 'Sure about that?' %>
+		<br/>
+		<p>
+			<%= link_to 'Edit Your Hack', edit_webapp_url(@webapp.id) %>
+		</p>
+		<p>
+			<%= link_to 'Delete Your Hack', webapp_url(@webapp.id), method: :delete, confirm: 'Sure about that?' %>
+		</p>
 	<% end %>
 <% end %>
