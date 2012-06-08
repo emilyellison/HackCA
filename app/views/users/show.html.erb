@@ -60,6 +60,6 @@ Background:
 	<% end %>
 	<hr/>
 <% end %>
-<% if @current_user %>
+<% if @current_user.id == @user.id %>
 	<button><%= link_to 'Add a Hack', new_webapp_url %></button>
 <% end %>
